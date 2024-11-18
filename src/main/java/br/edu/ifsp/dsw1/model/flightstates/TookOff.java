@@ -16,7 +16,7 @@ public class TookOff implements State {
 
 	@Override
 	public void change(FlightData flight) {
-		
+		//o voo deve ser removido do sistema
 	}
 
 }
