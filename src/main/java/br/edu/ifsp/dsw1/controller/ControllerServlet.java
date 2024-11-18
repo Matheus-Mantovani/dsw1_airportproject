@@ -10,7 +10,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/controller.do")
-public class Controller extends HttpServlet{
+public class ControllerServlet extends HttpServlet{
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
