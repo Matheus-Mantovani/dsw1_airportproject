@@ -12,7 +12,7 @@ public class ErrorCommand implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		return "index.jsp?error=true";
+		return "erro.jsp";
 	}
-	
+
 }

@@ -8,6 +8,9 @@ import br.edu.ifsp.dsw1.controller.command.DesembarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.EmbarcandoCommand;
 import br.edu.ifsp.dsw1.controller.command.EmbarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.ErrorCommand;
+import br.edu.ifsp.dsw1.controller.command.LoginCommand;
+import br.edu.ifsp.dsw1.controller.command.LogoutCommand;
+import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -16,6 +19,9 @@ import jakarta.servlet.http.HttpServletResponse;
 
 @WebServlet("/controller.do")
 public class ControllerServlet extends HttpServlet{
+	private static final long serialVersionUID = 1L;
+	private FlightDataCollection database = new FlightDataCollection();
+
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -30,11 +36,17 @@ public class ControllerServlet extends HttpServlet{
 			comando = new EmbarcandoCommand();
 		} else if("desembarque".equals(action)) {
 			comando = new DesembarqueCommand();
+		} else if("login".equals(action)) {
+			comando = new LoginCommand();
+		} else if("logout".equals(action)) {
+			comando = new LogoutCommand();
 		} else {
 			comando = new ErrorCommand();
 		}
 
-		comando.execute(request, response);
+		String view = comando.execute(request, response);
+		var dispatcher = request.getRequestDispatcher(view);
+		dispatcher.forward(request, response);
 	}
 	
 	

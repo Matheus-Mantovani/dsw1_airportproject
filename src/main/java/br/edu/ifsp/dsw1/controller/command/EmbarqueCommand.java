@@ -22,7 +22,7 @@ public class EmbarqueCommand implements Command{
 				.filter(c -> c.getState() instanceof Boarding)
 				.toList();
 		
-		request.setAttribute("listaAvioes", avioes);
+		request.setAttribute("listaAvioesEmbarque", avioes);
 		
 		return "embarque.jsp";
 	}
