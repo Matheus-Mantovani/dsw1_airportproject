@@ -10,13 +10,15 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class DesembarqueCommand implements Command{
+public class UpdateStateCommand implements Command{
 	private FlightDataCollection database;
+	private Long number;
 
 	
-	public DesembarqueCommand(FlightDataCollection database) {
+	public UpdateStateCommand(FlightDataCollection database, Long number) {
 		super();
 		this.database = database;
+		this.number = number;
 	}
 
 
@@ -24,13 +26,9 @@ public class DesembarqueCommand implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<FlightData> avioes = database.getAllFligthts().stream()
-				.filter(c -> c.getState() instanceof Arriving)
-				.toList();
+		database.updateFlight(number);
 		
-		request.setAttribute("listaAvioesDesembarque", avioes);
-		
-		return "desembarque.jsp";
+		String redirect = request.getParameter("redirect");
+		return "controller.do?action=" + redirect;
 	}
-
 }

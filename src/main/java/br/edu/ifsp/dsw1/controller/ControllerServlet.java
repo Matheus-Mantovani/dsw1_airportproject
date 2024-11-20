@@ -10,6 +10,7 @@ import br.edu.ifsp.dsw1.controller.command.EmbarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.ErrorCommand;
 import br.edu.ifsp.dsw1.controller.command.LoginCommand;
 import br.edu.ifsp.dsw1.controller.command.LogoutCommand;
+import br.edu.ifsp.dsw1.controller.command.UpdateStateCommand;
 import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
@@ -39,6 +40,12 @@ public class ControllerServlet extends HttpServlet{
 			comando = new LoginCommand();
 		} else if("logout".equals(action)) {
 			comando = new LogoutCommand();
+		} else if("updateState".equals(action)) {
+			String strNum = request.getParameter("number");
+			Long number = parseLongParameter(strNum);
+			if(number != null) {
+				comando = new UpdateStateCommand(database, number);
+			}
 		} else {
 			comando = new ErrorCommand();
 		}
@@ -59,5 +66,17 @@ public class ControllerServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) 
 			throws ServletException, IOException {
 		processRequest(req, resp);
+	}
+	
+	private Long parseLongParameter(String strNum) 
+	        throws IOException {
+	    if (strNum != null && !strNum.isEmpty()) {
+	        try {
+	            return Long.parseLong(strNum);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return null;
 	}
 }

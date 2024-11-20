@@ -35,6 +35,7 @@ if (attLista != null) {
 							<th>Companhia Aérea</th>
 							<th>ID do Voo</th>
 							<th>Tempo</th>
+							<th>Ações</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -43,6 +44,7 @@ if (attLista != null) {
 							<td><%=voo.getCompany()%></td>
 							<td><%=voo.getFlightNumber()%></td>
 							<td><%=voo.getTime()%></td>
+							<td><a href="controller.do?action=updateState&number=<%=voo.getFlightNumber()%>&redirect=desembarque">Enviar para embarque</a></td>
 						</tr>
 						<%} %>
 					</tbody>
