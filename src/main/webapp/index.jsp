@@ -2,11 +2,16 @@
 	pageEncoding="UTF-8"%>
 
 <%
-//se o usuario ja estiver logado, a pagina de login nao aparecera
 var logado = false;
+var erro = false;
+var msgErro = (String) request.getAttribute("msgErro");
 
-if ("true".equals(request.getParameter("logado"))) {
+if (session != null && session.getAttribute("nome") != null) {
 	logado = true;
+}
+
+if (msgErro != null) {
+	erro = true;
 }
 %>
 
@@ -31,15 +36,22 @@ if ("true".equals(request.getParameter("logado"))) {
 				<div class="card">
 					<div class="card-body">
 						<h4 class="card-title text-center">Login</h4>
-						<form action="controller.do?action=login">
+						<% if (erro) { %>
+						    <p class="text-center" style="color: red; font-weight: bold;">
+						        <%= msgErro %>
+						    </p>
+						<% } %>
+						<form action="controller.do?action=login" method="post">
 							<div class="form-group">
-								<label for="nome">Nome</label>
-								<input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required>
+								<label for="nome">Nome</label> <input type="text"
+									class="form-control" id="nome" name="nome"
+									placeholder="Seu nome" required>
 							</div>
 							<br>
 							<div class="form-group">
-								<label for="senha">Senha</label> 
-								<input type="password" class="form-control" id="senha" name="senha" placeholder="Sua senha" required>
+								<label for="senha">Senha</label> <input type="password"
+									class="form-control" id="senha" name="senha"
+									placeholder="Sua senha" required>
 							</div>
 							<br>
 							<div class="d-flex justify-content-between">
@@ -50,9 +62,9 @@ if ("true".equals(request.getParameter("logado"))) {
 					</div>
 				</div>
 				<%} else {%>
-					<h4 class="card-title text-center">Você já está logado!</h4>
-					<br>
-					<a href="controller.do?action=logout" class="btn btn-danger w-100">Deslogar</a>
+				<h4 class="card-title text-center">Você já está logado!</h4>
+				<br> <a href="controller.do?action=logout"
+					class="btn btn-danger w-100">Deslogar</a>
 				<%} %>
 			</div>
 		</div>

@@ -8,6 +8,7 @@ import br.edu.ifsp.dsw1.controller.command.DesembarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.EmbarcandoCommand;
 import br.edu.ifsp.dsw1.controller.command.EmbarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.ErrorCommand;
+import br.edu.ifsp.dsw1.controller.command.IndexCommand;
 import br.edu.ifsp.dsw1.controller.command.LoginCommand;
 import br.edu.ifsp.dsw1.controller.command.LogoutCommand;
 import br.edu.ifsp.dsw1.controller.command.UpdateStateCommand;
@@ -46,6 +47,8 @@ public class ControllerServlet extends HttpServlet{
 			if(number != null) {
 				comando = new UpdateStateCommand(database, number);
 			}
+		} else if("index".equals(action)) {
+			comando = new IndexCommand();
 		} else {
 			comando = new ErrorCommand();
 		}
