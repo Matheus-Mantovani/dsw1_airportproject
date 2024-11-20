@@ -65,7 +65,7 @@ public class FlightDataCollection implements FlightDataSubject{
 	
 	private FlightData findByNumber(Long flightNumber) {
 		return flights.stream()
-				.filter(flight -> flight.getFlightNumber() == flightNumber)
+				.filter(flight -> flight.getFlightNumber().equals(flightNumber))
 				.findFirst()
 				.orElse(null);
 	}
