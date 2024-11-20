@@ -10,12 +10,19 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class AdministracaoCommand implements Command{
+	private FlightDataCollection database;
 
+	
+	public AdministracaoCommand(FlightDataCollection database) {
+		super();
+		this.database = database;
+	}
+
+	
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		FlightDataCollection collection = new FlightDataCollection();
-		List<FlightData> avioes = collection.getAllFligthts();
+		List<FlightData> avioes = database.getAllFligthts();
 		
 		request.setAttribute("listaAvioes", avioes);
 		

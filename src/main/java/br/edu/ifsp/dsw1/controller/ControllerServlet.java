@@ -21,7 +21,6 @@ import jakarta.servlet.http.HttpServletResponse;
 public class ControllerServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 	private FlightDataCollection database = new FlightDataCollection();
-
 	
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
@@ -29,13 +28,13 @@ public class ControllerServlet extends HttpServlet{
 		Command comando = null;
 
 		if("administracao".equals(action)) {
-			comando = new AdministracaoCommand();
+			comando = new AdministracaoCommand(database);
 		} else if("embarque".equals(action)) {
-			comando = new EmbarqueCommand();
+			comando = new EmbarqueCommand(database);
 		} else if("embarcando".equals(action)) {
-			comando = new EmbarcandoCommand();
+			comando = new EmbarcandoCommand(database);
 		} else if("desembarque".equals(action)) {
-			comando = new DesembarqueCommand();
+			comando = new DesembarqueCommand(database);
 		} else if("login".equals(action)) {
 			comando = new LoginCommand();
 		} else if("logout".equals(action)) {

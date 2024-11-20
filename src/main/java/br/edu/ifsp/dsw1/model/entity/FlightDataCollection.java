@@ -78,8 +78,8 @@ public class FlightDataCollection implements FlightDataSubject{
 		FlightData a5 = new FlightData(632L, "Companhia5", "23:23");
 		
 		a1.setState(Arriving.getInstance());
-		a2.setState(Boarding.getInstance());
-		a3.setState(TakingOff.getInstance());
+		a2.setState(Arriving.getInstance());
+		a3.setState(Arriving.getInstance());
 		a4.setState(Arriving.getInstance());
 		a5.setState(Arriving.getInstance());
 		
@@ -89,12 +89,14 @@ public class FlightDataCollection implements FlightDataSubject{
 		flights.add(a4);
 		flights.add(a5);
 		
-		//updateFlight(123L); //123 deve sair da lista
+		updateFlight(123L);
+		updateFlight(123L);
+		updateFlight(1432L);
 		//updateFlight(123L);
-		updateFlight(1432L); //deve estar em boarding
-		//updateFlight(123L);
-		updateFlight(634L); // deve estar em takingoff
 		updateFlight(634L);
+		//updateFlight(634L);
+		updateFlight(123L);
+		updateFlight(1432L);
 	}
 }
 
