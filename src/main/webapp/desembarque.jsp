@@ -1,12 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>Tabela de Voos</title>
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+        crossorigin="anonymous">
 </head>
 <body>
-	<jsp:include page="/includes/base.html"/>
+    <jsp:include page="/includes/base.html" />
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-center">Tabela de Voos em DESEMBARQUE</h3>
+                <table class="table table-striped table-bordered mt-4">
+                    <thead class="table-dark text-center">
+                        <tr>
+                            <th>Companhia Aérea</th>
+                            <th>ID do Voo</th>
+                            <th>Tempo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <%-- finalizar depois tabela --%>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

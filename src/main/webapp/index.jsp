@@ -33,15 +33,13 @@ if ("true".equals(request.getParameter("logado"))) {
 						<h4 class="card-title text-center">Login</h4>
 						<form action="controller.do?action=login">
 							<div class="form-group">
-								<label for="nome">Nome</label> <input type="text"
-									class="form-control" id="nome" name="nome"
-									placeholder="Seu nome" required>
+								<label for="nome">Nome</label>
+								<input type="text" class="form-control" id="nome" name="nome" placeholder="Seu nome" required>
 							</div>
 							<br>
 							<div class="form-group">
-								<label for="senha">Senha</label> <input type="password"
-									class="form-control" id="senha" name="senha"
-									placeholder="Sua senha" required>
+								<label for="senha">Senha</label> 
+								<input type="password" class="form-control" id="senha" name="senha" placeholder="Sua senha" required>
 							</div>
 							<br>
 							<div class="d-flex justify-content-between">
