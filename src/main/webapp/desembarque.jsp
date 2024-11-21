@@ -4,8 +4,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%
+var logado = false;
 var attLista = request.getAttribute("listaAvioesDesembarque");
 List<FlightData> listaVoos = new ArrayList<>();
+
+if(session != null && session.getAttribute("nome") != null) {
+    logado = true;
+}
 
 if (attLista != null) {
 	listaVoos = (List<FlightData>) attLista;
@@ -35,7 +40,9 @@ if (attLista != null) {
 							<th>Companhia Aérea</th>
 							<th>ID do Voo</th>
 							<th>Tempo</th>
+							<%if(logado) {%>
 							<th>Ações</th>
+							<%} %>
 						</tr>
 					</thead>
 					<tbody>
@@ -44,7 +51,9 @@ if (attLista != null) {
 							<td><%=voo.getCompany()%></td>
 							<td><%=voo.getFlightNumber()%></td>
 							<td><%=voo.getTime()%></td>
+							<%if(logado) {%>
 							<td><a href="controller.do?action=updateState&number=<%=voo.getFlightNumber()%>&redirect=desembarque">Enviar para embarque</a></td>
+							<%} %>
 						</tr>
 						<%} %>
 					</tbody>
