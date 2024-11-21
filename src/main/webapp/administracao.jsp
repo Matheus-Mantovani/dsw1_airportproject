@@ -29,6 +29,11 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title text-center">Cadastrar Novo Voo</h4>
+                            <% if (request.getAttribute("msgSucesso") != null) { %>
+								<p class="text-center" style="color: green; font-weight: bold;">
+						        <%= request.getAttribute("msgSucesso") %>
+						    </p>
+							<% } %>
                             <form action="controller.do?action=adicionarVoo" method="post">
                                 <div class="form-group">
                                     <label for="companhia">Companhia Aérea</label>
