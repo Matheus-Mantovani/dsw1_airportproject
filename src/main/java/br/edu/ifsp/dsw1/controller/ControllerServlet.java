@@ -14,11 +14,7 @@ import br.edu.ifsp.dsw1.controller.command.IndexCommand;
 import br.edu.ifsp.dsw1.controller.command.LoginCommand;
 import br.edu.ifsp.dsw1.controller.command.LogoutCommand;
 import br.edu.ifsp.dsw1.controller.command.UpdateStateCommand;
-import br.edu.ifsp.dsw1.model.entity.FlightData;
 import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
-import br.edu.ifsp.dsw1.model.flightstates.Arriving;
-import br.edu.ifsp.dsw1.model.flightstates.Boarding;
-import br.edu.ifsp.dsw1.model.flightstates.TakingOff;
 import br.edu.ifsp.dsw1.model.totens.TotemAllFlights;
 import br.edu.ifsp.dsw1.model.totens.TotemArriving;
 import br.edu.ifsp.dsw1.model.totens.TotemBoarding;
@@ -48,21 +44,6 @@ public class ControllerServlet extends HttpServlet{
 		database.register(totemBoarding);
 		database.register(totemTakingOff);
 		database.register(totemTookOff);
-		
-		//temporario gambiarra apagar depois
-		FlightData fd11 = new FlightData(1232L, "aaa", "13:32");
-		fd11.setState(Arriving.getInstance());
-		FlightData fd12 = new FlightData(1123L, "bbb", "42:32");
-		fd12.setState(TakingOff.getInstance());
-		FlightData fd13 = new FlightData(1233L, "ccc", "23:12");
-		fd13.setState(Boarding.getInstance());
-		FlightData fd14 = new FlightData(1645L, "ddd", "12:31");
-		fd14.setState(TakingOff.getInstance());
-		
-		database.insertFlight(fd11);
-		database.insertFlight(fd12);
-		database.insertFlight(fd13);
-		database.insertFlight(fd14);
 	}
 
 

@@ -1,11 +1,8 @@
 package br.edu.ifsp.dsw1.controller.command;
 
 import java.io.IOException;
-import java.util.List;
 
-import br.edu.ifsp.dsw1.model.entity.FlightData;
 import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
-import br.edu.ifsp.dsw1.model.flightstates.Arriving;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

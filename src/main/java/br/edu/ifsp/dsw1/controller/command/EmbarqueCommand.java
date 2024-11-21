@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.util.List;
 
 import br.edu.ifsp.dsw1.model.entity.FlightData;
-import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
-import br.edu.ifsp.dsw1.model.flightstates.Boarding;
 import br.edu.ifsp.dsw1.model.totens.TotemBoarding;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;

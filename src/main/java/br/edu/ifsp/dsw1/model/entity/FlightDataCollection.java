@@ -4,9 +4,6 @@ import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
-import br.edu.ifsp.dsw1.model.flightstates.Arriving;
-import br.edu.ifsp.dsw1.model.flightstates.Boarding;
-import br.edu.ifsp.dsw1.model.flightstates.TakingOff;
 import br.edu.ifsp.dsw1.model.flightstates.TookOff;
 import br.edu.ifsp.dsw1.model.observer.FlightDataObserver;
 import br.edu.ifsp.dsw1.model.observer.FlightDataSubject;
