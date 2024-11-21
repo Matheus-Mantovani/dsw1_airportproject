@@ -29,7 +29,7 @@
                     <div class="card">
                         <div class="card-body">
                             <h4 class="card-title text-center">Cadastrar Novo Voo</h4>
-                            <form action="controller.do?action=administracao" method="post">
+                            <form action="controller.do?action=adicionarVoo" method="post">
                                 <div class="form-group">
                                     <label for="companhia">Companhia Aérea</label>
                                     <input type="text" class="form-control" id="companhia" name="companhia" 

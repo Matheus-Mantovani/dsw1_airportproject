@@ -2,6 +2,7 @@ package br.edu.ifsp.dsw1.controller;
 
 import java.io.IOException;
 
+import br.edu.ifsp.dsw1.controller.command.AdicionarVooCommand;
 import br.edu.ifsp.dsw1.controller.command.AdministracaoCommand;
 import br.edu.ifsp.dsw1.controller.command.Command;
 import br.edu.ifsp.dsw1.controller.command.DesembarqueCommand;
@@ -70,7 +71,7 @@ public class ControllerServlet extends HttpServlet{
 		Command comando = null;
 
 		if("administracao".equals(action)) {
-			comando = new AdministracaoCommand(database); //
+			comando = new AdministracaoCommand(totemAllFlights);
 		} else if("embarque".equals(action)) {
 			comando = new EmbarqueCommand(totemBoarding);
 		} else if("embarcando".equals(action)) {
@@ -89,6 +90,8 @@ public class ControllerServlet extends HttpServlet{
 			}
 		} else if("index".equals(action)) {
 			comando = new IndexCommand();
+		} else if("adicionarVoo".equals(action)) {
+			comando = new AdicionarVooCommand(database);
 		} else {
 			comando = new ErrorCommand();
 		}
