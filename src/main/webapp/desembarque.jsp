@@ -29,7 +29,7 @@ if (attLista != null) {
 	crossorigin="anonymous">
 </head>
 <body>
-	<jsp:include page="/includes/base.html" />
+	<jsp:include page="/includes/base.jsp" />
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-12">

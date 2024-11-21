@@ -20,7 +20,7 @@
         crossorigin="anonymous">
 </head>
 <body>
-    <jsp:include page="/includes/base.html" />
+    <jsp:include page="/includes/base.jsp" />
     <div class="container d-flex justify-content-center align-items-center"
         style="min-height: 100vh;">
         <div class="row w-100">
