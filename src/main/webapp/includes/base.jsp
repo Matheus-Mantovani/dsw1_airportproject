@@ -41,7 +41,7 @@
 								de Desembarque</a></li>
 						<li class="nav-item"><a class="nav-link" href="controller.do?action=embarque"> Sala
 								de Embarque</a></li>
-						<li class="nav-item"><a class="nav-link" href="controller.do?action=embarcando">Embarcando</a></li>
+						<li class="nav-item"><a class="nav-link" href="controller.do?action=hall1">Hall 1</a></li>
 					</ul>
 				</div>
 			</div>

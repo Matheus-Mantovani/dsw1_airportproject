@@ -6,7 +6,7 @@ import br.edu.ifsp.dsw1.controller.command.AdicionarVooCommand;
 import br.edu.ifsp.dsw1.controller.command.AdministracaoCommand;
 import br.edu.ifsp.dsw1.controller.command.Command;
 import br.edu.ifsp.dsw1.controller.command.DesembarqueCommand;
-import br.edu.ifsp.dsw1.controller.command.EmbarcandoCommand;
+import br.edu.ifsp.dsw1.controller.command.Hall1Command;
 import br.edu.ifsp.dsw1.controller.command.EmbarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.ErrorCommand;
 import br.edu.ifsp.dsw1.controller.command.IndexCommand;
@@ -51,11 +51,11 @@ public class ControllerServlet extends HttpServlet{
 		//temporario gambiarra apagar depois
 		FlightData fd11 = new FlightData(1232L, "aaa", "13:32");
 		fd11.setState(Arriving.getInstance());
-		FlightData fd12 = new FlightData(1232L, "bbb", "42:32");
+		FlightData fd12 = new FlightData(1123L, "bbb", "42:32");
 		fd12.setState(TakingOff.getInstance());
-		FlightData fd13 = new FlightData(1232L, "ccc", "23:12");
+		FlightData fd13 = new FlightData(1233L, "ccc", "23:12");
 		fd13.setState(Boarding.getInstance());
-		FlightData fd14 = new FlightData(1232L, "ddd", "12:31");
+		FlightData fd14 = new FlightData(1645L, "ddd", "12:31");
 		fd14.setState(TakingOff.getInstance());
 		
 		database.insertFlight(fd11);
@@ -74,8 +74,8 @@ public class ControllerServlet extends HttpServlet{
 			comando = new AdministracaoCommand(totemAllFlights);
 		} else if("embarque".equals(action)) {
 			comando = new EmbarqueCommand(totemBoarding);
-		} else if("embarcando".equals(action)) {
-			comando = new EmbarcandoCommand(totemTakingOff);
+		} else if("hall1".equals(action)) {
+			comando = new Hall1Command(totemTakingOff);
 		} else if("desembarque".equals(action)) {
 			comando = new DesembarqueCommand(totemArriving);
 		} else if("login".equals(action)) {

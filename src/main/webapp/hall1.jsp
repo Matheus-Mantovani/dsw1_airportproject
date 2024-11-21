@@ -33,7 +33,7 @@ if (attLista != null) {
 	<div class="container mt-5">
 		<div class="row">
 			<div class="col-md-12">
-				<h3 class="text-center">Tabela de Voos EMBARCANDO</h3>
+				<h3 class="text-center">Tabela de Voos DECOLANDO</h3>
 				<table class="table table-striped table-bordered mt-4">
 					<thead class="table-dark text-center">
 						<tr>
@@ -52,7 +52,7 @@ if (attLista != null) {
 							<td><%=voo.getFlightNumber()%></td>
 							<td><%=voo.getTime()%></td>
 							<%if(logado) {%>
-							<td><a href="controller.do?action=updateState&number=<%=voo.getFlightNumber()%>&redirect=embarcando">Decolar</a></td>
+							<td><a href="controller.do?action=updateState&number=<%=voo.getFlightNumber()%>&redirect=hall1">Decolar</a></td>
 							<%} %>
 						</tr>
 						<%} %>

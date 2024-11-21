@@ -11,11 +11,11 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
-public class EmbarcandoCommand implements Command{
+public class Hall1Command implements Command{
 	private TotemTakingOff totem;
 
 	
-	public EmbarcandoCommand(TotemTakingOff totem) {
+	public Hall1Command(TotemTakingOff totem) {
 		super();
 		this.totem = totem;
 	}
@@ -29,7 +29,7 @@ public class EmbarcandoCommand implements Command{
 		
 		request.setAttribute("listaAvioesEmbarcando", avioes);
 		
-		return "embarcando.jsp";
+		return "hall1.jsp";
 	}
 
 }
