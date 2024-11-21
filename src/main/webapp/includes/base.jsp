@@ -36,6 +36,8 @@
 						<%if(logado) {%>
 						<li class="nav-item"><a class="nav-link" href="controller.do?action=administracao">
 								Administração</a></li>
+						<li class="nav-item"><a class="nav-link" href="controller.do?action=adicionarVoo">
+								Adicionar Voo</a></li>
 						<%} %>
 						<li class="nav-item"><a class="nav-link" href="controller.do?action=desembarque"> Sala
 								de Desembarque</a></li>

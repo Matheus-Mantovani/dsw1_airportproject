@@ -32,23 +32,25 @@ public class ControllerServlet extends HttpServlet{
 	
 	private FlightDataCollection database = new FlightDataCollection();
 	
+	// Instâncias dos totens de status de voo
 	private TotemAllFlights totemAllFlights = new TotemAllFlights();
 	private TotemArriving totemArriving = new TotemArriving();
 	private TotemBoarding totemBoarding = new TotemBoarding();
 	private TotemTakingOff totemTakingOff = new TotemTakingOff();
 	private TotemTookOff totemTookOff = new TotemTookOff();
 	
-	
+	// Construtor do servlet, registra os totens para escutar alterações nos dados dos voos
 	public ControllerServlet() {
+		database.register(totemAllFlights);
 		database.register(totemArriving);
 		database.register(totemBoarding);
 		database.register(totemTakingOff);
 		database.register(totemTookOff);
 	}
 
-
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
+		
 		String action = request.getParameter("action");
 		Command comando = null;
 
@@ -76,11 +78,11 @@ public class ControllerServlet extends HttpServlet{
 			comando = new ErrorCommand();
 		}
 
+		//Redireciona para a página correspondente
 		String view = comando.execute(request, response);
 		var dispatcher = request.getRequestDispatcher(view);
 		dispatcher.forward(request, response);
 	}
-	
 	
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) 
@@ -93,6 +95,4 @@ public class ControllerServlet extends HttpServlet{
 			throws ServletException, IOException {
 		processRequest(req, resp);
 	}
-	
-	
 }
