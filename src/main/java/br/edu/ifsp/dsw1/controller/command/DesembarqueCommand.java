@@ -6,17 +6,18 @@ import java.util.List;
 import br.edu.ifsp.dsw1.model.entity.FlightData;
 import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
 import br.edu.ifsp.dsw1.model.flightstates.Arriving;
+import br.edu.ifsp.dsw1.model.totens.TotemArriving;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 public class DesembarqueCommand implements Command{
-	private FlightDataCollection database;
+	private TotemArriving totem;
 
 	
-	public DesembarqueCommand(FlightDataCollection database) {
+	public DesembarqueCommand(TotemArriving totem) {
 		super();
-		this.database = database;
+		this.totem = totem;
 	}
 
 
@@ -24,9 +25,7 @@ public class DesembarqueCommand implements Command{
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		List<FlightData> avioes = database.getAllFligthts().stream()
-				.filter(c -> c.getState() instanceof Arriving)
-				.toList();
+		List<FlightData> avioes = totem.getFlights();
 		
 		request.setAttribute("listaAvioesDesembarque", avioes);
 		

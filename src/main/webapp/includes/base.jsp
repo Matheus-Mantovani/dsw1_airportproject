@@ -1,6 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" 
 	pageEncoding="UTF-8"%>
 
+<%
+    var logado = false;
+    if(session != null && session.getAttribute("nome") != null) {
+        logado = true;
+    }
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -26,8 +33,10 @@
 				</button>
 				<div class="collapse navbar-collapse" id="navbarNav">
 					<ul class="navbar-nav">
+						<%if(logado) {%>
 						<li class="nav-item"><a class="nav-link" href="controller.do?action=administracao">
 								Administração</a></li>
+						<%} %>
 						<li class="nav-item"><a class="nav-link" href="controller.do?action=desembarque"> Sala
 								de Desembarque</a></li>
 						<li class="nav-item"><a class="nav-link" href="controller.do?action=embarque"> Sala

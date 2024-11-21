@@ -12,7 +12,16 @@ import br.edu.ifsp.dsw1.controller.command.IndexCommand;
 import br.edu.ifsp.dsw1.controller.command.LoginCommand;
 import br.edu.ifsp.dsw1.controller.command.LogoutCommand;
 import br.edu.ifsp.dsw1.controller.command.UpdateStateCommand;
+import br.edu.ifsp.dsw1.model.entity.FlightData;
 import br.edu.ifsp.dsw1.model.entity.FlightDataCollection;
+import br.edu.ifsp.dsw1.model.flightstates.Arriving;
+import br.edu.ifsp.dsw1.model.flightstates.Boarding;
+import br.edu.ifsp.dsw1.model.flightstates.TakingOff;
+import br.edu.ifsp.dsw1.model.totens.TotemAllFlights;
+import br.edu.ifsp.dsw1.model.totens.TotemArriving;
+import br.edu.ifsp.dsw1.model.totens.TotemBoarding;
+import br.edu.ifsp.dsw1.model.totens.TotemTakingOff;
+import br.edu.ifsp.dsw1.model.totens.TotemTookOff;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -22,21 +31,52 @@ import jakarta.servlet.http.HttpServletResponse;
 @WebServlet("/controller.do")
 public class ControllerServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
+	
 	private FlightDataCollection database = new FlightDataCollection();
 	
+	private TotemAllFlights totemAllFlights = new TotemAllFlights();
+	private TotemArriving totemArriving = new TotemArriving();
+	private TotemBoarding totemBoarding = new TotemBoarding();
+	private TotemTakingOff totemTakingOff = new TotemTakingOff();
+	private TotemTookOff totemTookOff = new TotemTookOff();
+	
+	
+	public ControllerServlet() {
+		database.register(totemArriving);
+		database.register(totemBoarding);
+		database.register(totemTakingOff);
+		database.register(totemTookOff);
+		
+		//temporario gambiarra apagar depois
+		FlightData fd11 = new FlightData(1232L, "aaa", "13:32");
+		fd11.setState(Arriving.getInstance());
+		FlightData fd12 = new FlightData(1232L, "bbb", "42:32");
+		fd12.setState(TakingOff.getInstance());
+		FlightData fd13 = new FlightData(1232L, "ccc", "23:12");
+		fd13.setState(Boarding.getInstance());
+		FlightData fd14 = new FlightData(1232L, "ddd", "12:31");
+		fd14.setState(TakingOff.getInstance());
+		
+		database.insertFlight(fd11);
+		database.insertFlight(fd12);
+		database.insertFlight(fd13);
+		database.insertFlight(fd14);
+	}
+
+
 	protected void processRequest(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 		String action = request.getParameter("action");
 		Command comando = null;
 
 		if("administracao".equals(action)) {
-			comando = new AdministracaoCommand(database);
+			comando = new AdministracaoCommand(database); //
 		} else if("embarque".equals(action)) {
-			comando = new EmbarqueCommand(database);
+			comando = new EmbarqueCommand(totemBoarding);
 		} else if("embarcando".equals(action)) {
-			comando = new EmbarcandoCommand(database);
+			comando = new EmbarcandoCommand(totemTakingOff);
 		} else if("desembarque".equals(action)) {
-			comando = new DesembarqueCommand(database);
+			comando = new DesembarqueCommand(totemArriving);
 		} else if("login".equals(action)) {
 			comando = new LoginCommand();
 		} else if("logout".equals(action)) {
