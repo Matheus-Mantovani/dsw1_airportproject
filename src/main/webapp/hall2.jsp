@@ -29,6 +29,11 @@ if (attLista != null) {
 		<div class="row">
 			<div class="col-md-12">
 				<h3 class="text-center">Tabela de Voos DECOLADOS</h3>
+				<% if (request.getAttribute("idInvalido") != null) { %>
+					<p class="text-center" style="color: red; font-weight: bold;">
+						<%= request.getAttribute("idInvalido") %>
+					</p>
+				<% } %>
 				<table class="table table-striped table-bordered mt-4">
 					<thead class="table-dark text-center">
 						<tr>

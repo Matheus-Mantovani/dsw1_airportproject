@@ -43,7 +43,7 @@
                                 <br>
                                 <div class="form-group">
                                     <label for="idVoo">ID do Voo</label>
-                                    <input type="text" class="form-control" id="idVoo" name="idVoo" 
+                                    <input type="number" class="form-control" id="idVoo" name="idVoo" 
                                         placeholder="Ex: 12345" required>
                                 </div>
                                 <br>

@@ -86,11 +86,7 @@ public class ControllerServlet extends HttpServlet{
 		} else if("logout".equals(action)) {
 			comando = new LogoutCommand();
 		} else if("updateState".equals(action)) {
-			String strNum = request.getParameter("number");
-			Long number = parseLongParameter(strNum);
-			if(number != null) {
-				comando = new UpdateStateCommand(database, number);
-			}
+			comando = new UpdateStateCommand(database);
 		} else if("index".equals(action)) {
 			comando = new IndexCommand();
 		} else if("adicionarVoo".equals(action)) {
@@ -117,15 +113,5 @@ public class ControllerServlet extends HttpServlet{
 		processRequest(req, resp);
 	}
 	
-	private Long parseLongParameter(String strNum) 
-	        throws IOException {
-	    if (strNum != null && !strNum.isEmpty()) {
-	        try {
-	            return Long.parseLong(strNum);
-	        } catch (NumberFormatException e) {
-	            e.printStackTrace();
-	        }
-	    }
-	    return null;
-	}
+	
 }

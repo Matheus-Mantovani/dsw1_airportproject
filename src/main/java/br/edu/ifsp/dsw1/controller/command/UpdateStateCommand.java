@@ -12,23 +12,40 @@ import jakarta.servlet.http.HttpServletResponse;
 
 public class UpdateStateCommand implements Command{
 	private FlightDataCollection database;
-	private Long number;
 
 	
-	public UpdateStateCommand(FlightDataCollection database, Long number) {
+	public UpdateStateCommand(FlightDataCollection database) {
 		super();
 		this.database = database;
-		this.number = number;
 	}
 
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
-		database.updateFlight(number);
 		
 		String redirect = request.getParameter("redirect");
+		String strNum = request.getParameter("number");
+		Long number = parseLongParameter(strNum);
+
+		if(number != null) {
+			database.updateFlight(number);
+			return "controller.do?action=" + redirect;
+		}
+		
+		request.setAttribute("idInvalido", "O id não é válido.");
 		return "controller.do?action=" + redirect;
+	}
+	
+	private Long parseLongParameter(String strNum) 
+	        throws IOException {
+	    if (strNum != null && !strNum.isEmpty()) {
+	        try {
+	            return Long.parseLong(strNum);
+	        } catch (NumberFormatException e) {
+	            e.printStackTrace();
+	        }
+	    }
+	    return null;
 	}
 }
