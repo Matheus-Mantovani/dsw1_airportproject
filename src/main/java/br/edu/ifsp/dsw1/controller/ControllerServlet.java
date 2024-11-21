@@ -7,6 +7,7 @@ import br.edu.ifsp.dsw1.controller.command.AdministracaoCommand;
 import br.edu.ifsp.dsw1.controller.command.Command;
 import br.edu.ifsp.dsw1.controller.command.DesembarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.Hall1Command;
+import br.edu.ifsp.dsw1.controller.command.Hall2Command;
 import br.edu.ifsp.dsw1.controller.command.EmbarqueCommand;
 import br.edu.ifsp.dsw1.controller.command.ErrorCommand;
 import br.edu.ifsp.dsw1.controller.command.IndexCommand;
@@ -76,6 +77,8 @@ public class ControllerServlet extends HttpServlet{
 			comando = new EmbarqueCommand(totemBoarding);
 		} else if("hall1".equals(action)) {
 			comando = new Hall1Command(totemTakingOff);
+		} else if("hall2".equals(action)) {
+			comando = new Hall2Command(totemTookOff);
 		} else if("desembarque".equals(action)) {
 			comando = new DesembarqueCommand(totemArriving);
 		} else if("login".equals(action)) {
